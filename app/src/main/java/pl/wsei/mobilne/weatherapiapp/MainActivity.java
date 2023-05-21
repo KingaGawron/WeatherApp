@@ -2,9 +2,13 @@ package pl.wsei.mobilne.weatherapiapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -92,4 +96,30 @@ DecimalFormat df= new DecimalFormat("#.##");
         RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(stringRequest);
     }
-}
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id==R.id.item1) {
+                Intent intent = new Intent(MainActivity.this,About.class);
+                startActivity(intent);
+                return true;
+        }
+        else if (id==R.id.item2) {
+            Intent intent = new Intent(MainActivity.this, Settings.class);
+            startActivity(intent);
+            return true;
+        }
+        else if (id==R.id.item3) {
+            Intent intent = new Intent(MainActivity.this, MainActivity.class);
+            startActivity(intent);
+            return true;
+        }
+          else
+                return super.onOptionsItemSelected(item);
+        }
+    }

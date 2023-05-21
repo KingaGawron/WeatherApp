@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/splashscreen"
+    tools:context=".About">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="About"
+        android:paddingBottom="50dp"
+        android:padding="50dp"
+        android:textColor="@android:color/white"
+        android:textSize="40sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="20dp"
+        android:paddingBottom="100dp"
+        android:text="Nasza aplikacja pogodowa to nieodzowne narzędzie dla wszystkich, którzy chcą być zawsze dobrze poinformowani o aktualnych i przyszłych warunkach atmosferycznych. Zawiera ona wszystko, czego potrzebujesz, aby dokładnie zaplanować swój dzień. "
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        />
+    <TextView
+        android:text="Autorzy: Kinga Gawron i Adam Lelito"
+        android:paddingBottom="50dp"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
