@@ -1,59 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/chmury"
-    android:orientation="vertical"
-    android:padding="16dp"
+    android:background="#242343"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Pogoda"
-        android:textColor="@android:color/white"
-        android:textSize="40sp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+        android:id="@+id/weatherIcon"
+        android:layout_marginTop="200dp">
+
+
+    </ImageView>
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/temperature"
+            android:paddingStart="30dp"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:text="0*C">
 
-        <EditText
-            android:id="@+id/etCity"
+        </TextView>
+
+
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:ems="10"
-            android:hint="City Name"
-            android:inputType="textPersonName" />
+            android:id="@+id/weatherCondition"
+            android:textSize="30sp"
+            android:textColor="#ffffff"
+            android:text="..."
+            android:paddingStart="30sp">
 
-        <Button
-            android:id="@+id/btnGet"
+        </TextView>
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="#0070c7"
-            android:onClick="getWeatherDetails"
-            android:text="Get"
-            android:textColor="@android:color/white"
-            app:backgroundTint="@null"></Button>
+            android:id="@+id/cityName"
+            android:textStyle="bold"
+            android:textSize="40sp"
+            android:text="..."
+            android:paddingStart="30sp"
+            android:textColor="#ffffff">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="150dp">
-
-            <TextView
-                android:id="@+id/tvResult"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </ScrollView>
+        </TextView>
 
     </LinearLayout>
 
-</LinearLayout>
+
+</RelativeLayout>
