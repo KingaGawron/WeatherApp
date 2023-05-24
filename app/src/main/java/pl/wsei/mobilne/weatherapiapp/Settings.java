@@ -14,6 +14,10 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
     }
+
+
+
+    //////////MENU//////////
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
@@ -29,6 +33,11 @@ public class Settings extends AppCompatActivity {
         }
         else if (id==R.id.item3) {
             Intent intent = new Intent(Settings.this, MainActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        else if (id==R.id.item4) {
+            Intent intent = new Intent(Settings.this, NewCity.class);
             startActivity(intent);
             return true;
         }

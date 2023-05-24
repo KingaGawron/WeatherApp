@@ -22,6 +22,7 @@ public class weatherData {
             int roundedValue=(int)Math.rint(tempResult);
             weatherD.mTemperature=Integer.toString(roundedValue);
             return weatherD;
+
         }
 
 
@@ -87,8 +88,6 @@ public class weatherData {
         }
 
         return "dunno";
-
-
     }
 
     public String getmTemperature() {

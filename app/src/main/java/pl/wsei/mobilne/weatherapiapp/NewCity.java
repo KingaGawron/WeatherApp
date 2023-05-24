@@ -36,7 +36,7 @@ public class NewCity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_new_city);
         etCity = findViewById(R.id.etCity);
         tvResult = findViewById(R.id.tvResult);
 
@@ -96,6 +96,8 @@ public class NewCity extends AppCompatActivity {
         RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(stringRequest);
     }
+
+    //MENU
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);

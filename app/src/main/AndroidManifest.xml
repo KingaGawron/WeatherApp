@@ -21,9 +21,6 @@
             android:name=".weatherData"
             android:exported="false" />
         <activity
-            android:name=".cityFinder"
-            android:exported="false" />
-        <activity
             android:name=".NewCity"
             android:exported="false" />
         <activity
