@@ -4,14 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E1E1E1"
     android:orientation="vertical"
     tools:context=".Settings">
+
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Settings"
-        android:textColor="@android:color/black"
-        android:textSize="40sp"
-        ></TextView>
+        android:layout_marginLeft="10dp"
+        android:text="Jednostka Temperatury"
+        android:textSize="16sp" />
+
+    <Switch
+        android:id="@+id/switchCel"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/white"
+        android:button="@color/white"
+        android:onClick="setCel"
+        android:text="Stopnie Celsjusza (℃)"
+        android:textSize="20sp" />
+
+    <Switch
+        android:id="@+id/switchFah"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/white"
+        android:button="@color/white"
+        android:onClick="setFah"
+        android:text="Stopnie Fahrenheita (°F)"
+        android:textSize="20sp" />
 
 </LinearLayout>

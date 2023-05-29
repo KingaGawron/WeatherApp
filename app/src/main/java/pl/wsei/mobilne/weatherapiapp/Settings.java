@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class Settings extends AppCompatActivity {
 
@@ -43,5 +44,13 @@ public class Settings extends AppCompatActivity {
         }
         else
             return super.onOptionsItemSelected(item);
+    }
+
+    public void setCel(View view) {
+
+    }
+
+    public void setFah(View view) {
+
     }
 }
