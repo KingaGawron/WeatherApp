@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void letsdoSomeNetworking(RequestParams params) {
+    void letsdoSomeNetworking(RequestParams params) {
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(WEATHER_URL, params, new JsonHttpResponseHandler() {
             @Override
@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    private void updateUI(weatherData weather) {
+    void updateUI(weatherData weather) {
 
 
         Temperature.setText(weather.getmTemperature());

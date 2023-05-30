@@ -35,7 +35,7 @@ public class weatherData {
     }
 
 
-    private static String updateWeatherIcon(int condition)
+    static String updateWeatherIcon(int condition)
     {
         if(condition>=0 && condition<=300)
         {

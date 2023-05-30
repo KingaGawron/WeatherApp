@@ -6,6 +6,7 @@ android {
     namespace 'pl.wsei.mobilne.weatherapiapp'
     compileSdk 33
 
+
     defaultConfig {
         applicationId "pl.wsei.mobilne.weatherapiapp"
         minSdk 24
