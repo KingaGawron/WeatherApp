@@ -12,7 +12,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,21 +33,23 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 public class NewCity extends AppCompatActivity {
+
     EditText etCity;
     TextView tvResult;
-    TextView tvCityList; // Nowe pole do wyświetlania listy miast
-    private final String url="https://api.openweathermap.org/data/2.5/weather";
-    private final String appId="cb263a9ed6988851a2ee09f0fe224e91";
+    LinearLayout llCityList; // Nowy kontener na przyciski usuwania dla każdego miasta
+    private final String url = "https://api.openweathermap.org/data/2.5/weather";
+    private final String appId = "cb263a9ed6988851a2ee09f0fe224e91";
     DecimalFormat df = new DecimalFormat("#.##");
     CityDatabase cityDatabase; // Obiekt bazy danych
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        llCityList = findViewById(R.id.llCityList);
         setContentView(R.layout.activity_new_city);
         etCity = findViewById(R.id.etCity);
         tvResult = findViewById(R.id.tvResult);
-        tvCityList = findViewById(R.id.tvCityList); // Inicjalizacja pola do wyświetlania listy miast
+        llCityList = findViewById(R.id.llCityList); // Inicjalizacja kontenera na przyciski usuwania miast
 
         // Inicjalizacja bazy danych
         cityDatabase = CityDatabaseClient.getInstance(getApplicationContext()).getCityDatabase();
@@ -152,7 +156,6 @@ public class NewCity extends AppCompatActivity {
     }
 
 
-
     private void updateCityList() {
         AsyncTask.execute(new Runnable() {
             @Override
@@ -161,58 +164,40 @@ public class NewCity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        StringBuilder sb = new StringBuilder();
-                        for (City city : cityList) {
-                            sb.append(city.getName()).append(" - ").append(df.format(city.getTemperature())).append(" °C");
-                            sb.append(" ");
-                            sb.append("[Usuń]");
-                            sb.append("\n");
-                        }
-                        tvCityList.setText(sb.toString());
-                        tvCityList.setMovementMethod(new ScrollingMovementMethod()); // Dodanie obsługi przewijania tekstu
-                        tvCityList.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                int offset = tvCityList.getOffsetForPosition(v.getX(), v.getY()); // Pobranie pozycji kliknięcia w TextView
-                                int line = tvCityList.getLayout().getLineForOffset(offset); // Pobranie linii dla danej pozycji
-                                int start = tvCityList.getLayout().getLineStart(line); // Początek linii
-                                int end = tvCityList.getLayout().getLineEnd(line); // Koniec linii
-                                String clickedLine = tvCityList.getText().subSequence(start, end).toString(); // Pobranie klikniętej linii
-                                String cityName = clickedLine.substring(0, clickedLine.indexOf(" -")); // Wyodrębnienie nazwy miasta
+                        llCityList.removeAllViews(); // Usunięcie istniejących przycisków przed dodaniem nowych
 
-                                // Wywołanie metody do usunięcia miasta z bazy danych
-                                deleteCity(cityName);
-                            }
-                        });
+                        for (final City city : cityList) {
+                            // Dodanie przycisku usuwania dla miasta
+                            Button btnDelete = new Button(NewCity.this);
+                            btnDelete.setText("[Usuń] " + city.getName());
+                            btnDelete.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    deleteCity(city);
+                                }
+                            });
+
+                            llCityList.addView(btnDelete); // Dodanie przycisku do kontenera
+                        }
                     }
                 });
             }
         });
     }
-    private void deleteCity(final String cityName) {
+
+    private void deleteCity(final City city) {
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
-                City city = cityDatabase.cityDao().getCityByName(cityName);
-                if (city != null) {
-                    cityDatabase.cityDao().deleteCity(city);
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(NewCity.this, "City deleted: " + cityName, Toast.LENGTH_SHORT).show();
-                            updateCityList(); // Odświeżenie listy miast po usunięciu
-                        }
-                    });
-                } else {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(NewCity.this, "City not found: " + cityName, Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
+                cityDatabase.cityDao().deleteCity(city);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(NewCity.this, "City deleted: " + city.getName(), Toast.LENGTH_SHORT).show();
+                        updateCityList(); // Odświeżenie listy miast po usunięciu
+                    }
+                });
             }
         });
     }
-
 }
