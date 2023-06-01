@@ -17,6 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WeatherApiApp"
         tools:targetApi="31">
+
         <activity
             android:name=".weatherData"
             android:exported="false" />
