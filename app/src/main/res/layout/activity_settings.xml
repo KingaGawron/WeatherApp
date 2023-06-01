@@ -6,15 +6,19 @@
     android:layout_height="match_parent"
     android:background="#E1E1E1"
     android:orientation="vertical"
-    tools:context=".Settings">
-
+    tools:context=".Settings"
+    android:text="Settings"
+    android:textSize="40sp">
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:text="Jednostka Temperatury"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+
+        ></TextView>
 
     <Switch
         android:id="@+id/switchCel"
@@ -40,4 +44,5 @@
         android:text="Stopnie Fahrenheita (°F)"
         android:textSize="20sp" />
 
-</LinearLayout>
+
+    </LinearLayout>
