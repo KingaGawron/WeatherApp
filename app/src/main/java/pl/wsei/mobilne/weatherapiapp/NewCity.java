@@ -200,4 +200,40 @@ public class NewCity extends AppCompatActivity {
             }
         });
     }
+
+    //MENU
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id==R.id.item1) {
+            Intent intent = new Intent(NewCity.this,About.class);
+            startActivity(intent);
+            return true;
+        }
+        else if (id==R.id.item2) {
+            Intent intent = new Intent(NewCity.this, Settings.class);
+            startActivity(intent);
+            return true;
+        }
+
+        else if (id==R.id.item3) {
+            Intent intent = new Intent(NewCity.this, MainActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        else if (id==R.id.item4) {
+            Intent intent = new Intent(NewCity.this, NewCity.class);
+            startActivity(intent);
+            return true;
+        }
+        else
+            return super.onOptionsItemSelected(item);
+    }
+
 }
